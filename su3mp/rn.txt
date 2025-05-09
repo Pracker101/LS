@@ -1,0 +1,14 @@
+Download MPJ Express from MPJ Express Official Site.
+
+Extract the files to C:\MPJExpress.
+
+Set environment variables:
+(system)	MPJ_HOME = C:\MPJExpress
+(system)	Add C:\MPJExpress\bin to PATH.
+(system) Add to CLASSPATH variable mpj.jar path.
+
+(optional - Edit user variable Path add %MPJHOME%/bin)
+
+
+javac -cp "C:\MPJExpress\lib\mpj.jar" SumMPI.java
+mpjrun -np 5 -dev multicore -cp "C:\MPJExpress\lib\mpj.jar" SumMPI

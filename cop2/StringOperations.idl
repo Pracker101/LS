@@ -1,0 +1,7 @@
+module StringApp {
+  interface StringOperations {
+    string concat(in string a, in string b);
+    long length(in string a);
+    string reverse(in string a);
+  };
+};

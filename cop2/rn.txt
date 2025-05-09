@@ -1,0 +1,21 @@
+Download JacORB(binary).
+
+Extract the ZIP file to C:\JacORB.
+Add JacORB to your environment variables:
+Create a new (system) variable JACORB_HOME → Set value as:
+C:\JacORB\jacorb-3.8
+Edit the (user) Path variable and add:
+C:\JacORB\jacorb-3.8\bin
+
+Add to CLASSPATH(system) variable:
+JacORB\lib\jacorb.jar
+JacORB\lib\idl.jar
+
+ 
+
+tnameserv -ORBInitialPort 1050
+
+idlj -fall  StringOperations.idl
+
+java StringServer -ORBInitialPort 1050 -ORBInitialHost localhost
+java StringClient -ORBInitialPort 1050 -ORBInitialHost localhost

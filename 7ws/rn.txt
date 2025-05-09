@@ -1,0 +1,16 @@
+Download Apache Tomcat
+
+Extract it to:
+C:\apache-tomcat-9.0
+
+Set SYSTEM environment variables:
+
+CATALINA_HOME=C:\apache-tomcat-9.0
+Add C:\apache-tomcat-9.0\bin to PATH
+
+Add apache-tomcat-9.0.102\lib\servlet-api.jar to CLASSPATH(system) variable
+
+Calculator/WEB-INF/classes/org/calculator/server/
+javac CalculatorService.java
+Calculator/WEB-INF/classes/org/calculator/client/
+javac CalculatorClientServlet.java
