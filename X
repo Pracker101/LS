@@ -1,0 +1,51 @@
+sudo apt update
+# 1. Install Java (JDK 8+)
+sudo apt install -y openjdk-11-jdk
+# Verify
+java -version
+
+# 2. Install Python 3
+sudo apt install -y python3 python3-pip
+# For socket examples no extra libs needed
+
+# 3. Install MPI (for C/C++ binding) and MPJ Express (Java MPI)
+sudo apt install -y openmpi-bin openmpi-common libopenmpi-dev
+# Download MPJ Express (https://mpj-express.org/) and unzip to ~/mpj
+# We'll assume MPJ is in ~/mpj
+
+# 4. (for JSP/Servlet) Install Apache Tomcat
+sudo apt install -y tomcat9
+# Webapps directory: /var/lib/tomcat9/webapps
+
+
+cd rmi-chat
+javac *.java
+rmiregistry 5000 &
+java ChatServer
+java ChatClient
+
+cd mpi-sum
+javac -cp ~/mpj/lib/mpj.jar SumMPI.java
+
+~/mpj/bin/mpjrun.sh -np 4 -cp . SumMPI
+
+python3 berkeley_master.py
+
+cd token-ring
+javac TokenRingMain.java
+java TokenRingMain
+
+cd Calculator
+javac -d WEB-INF/classes \
+  src/org/calculator/server/CalculatorService.java \
+  src/org/calculator/client/CalculatorClientServlet.java
+
+sudo systemctl restart tomcat9
+
+http://localhost:8080/Calculator/index.jsp
+
+
+
+
+
+
